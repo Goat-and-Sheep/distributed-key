@@ -17,8 +17,7 @@ def receiver():
     while True:
         try:
             message, addr = sock.recvfrom(1024)
-            print(
-                f'{time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())}: Receive data from {addr}: {message.decode()}')
+            return message.decode("utf-8")
         except:
             print("while receive message error occur")
 

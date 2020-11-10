@@ -9,9 +9,8 @@ mcast_group_ip = '234.2.2.2'
 mcast_group_port = 23456
 
 
-def sender():
+def sender(message):
     addrinfo = socket.getaddrinfo(mcast_group_ip, None)[0]
-    # 建立发送socket，和正常UDP数据包没区别
     send_sock = socket.socket(
         addrinfo[0], socket.SOCK_DGRAM)
     ttl_bin = struct.pack('@i', mttl)
@@ -21,20 +20,18 @@ def sender():
     else:
         send_sock.setsockopt(socket.IPPROTO_IPV6,
                              socket.IPV6_MULTICAST_HOPS, ttl_bin)
-    # 每十秒发送一遍消息
-    while True:
-        message = "([1,23,3],2)"
-        # 发送写法和正常UDP数据包的还是完全没区别
-        # 猜测只可能是网卡自己在识别到目的ip是组播地址后，自动将目的mac地址设为多播mac地址
+    count = 0
+    while 1:
+        count += 1
         send_sock.sendto(message.encode("utf-8"),
                          (addrinfo[4][0], mcast_group_port))
-        print(
-            f'{time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())}: message send finish')
-        time.sleep(2)
+        if count >= 4:
+            break
+        time.sleep(5)
 
 
 if __name__ == "__main__":
-    sender()
+    sender("hhhhhhhhhhh")
 
 # # coding:utf-8,
 # import socket
