@@ -126,13 +126,11 @@ class normal_node:
                 data = data.decode("utf-8")
                 client_addr = client_addr[0]
                 if data == "Ask for pubkeyforencrypt":
-                    while 1:
+                    for i in range(4):
+                        time.sleep(1)
                         send(your_gc, msg=self.pubkeyforencrypt.save_pkcs1(),
                              port=key_port)
-                        pkey = None
-                        pkey = self.keyreceive()
-                        if pkey != None:
-                            break
+                    pkey = self.keyreceive()
                     udp_recv.close()
                     break
                 else:

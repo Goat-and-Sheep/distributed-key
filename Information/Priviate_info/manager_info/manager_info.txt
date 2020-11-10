@@ -1,1 +1,1 @@
-{"prekey": "", "class": "Manager", "connectinfo": {"parent": {}, "Group": {}, "Nextlayor": {}}, "userkeys": {}}
+{"prekey": "", "class": "Manager", "connectinfo": {"parent": {}, "Group": {"xiaoming": "192.168.43.1"}, "Nextlayor": {}}, "userkeys": {"xiaoming": "55d2c037cd97ac0935ad451acd75c96c8ae57eac18d8602ec80697e4a4304dc3"}}

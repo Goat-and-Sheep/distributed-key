@@ -11,11 +11,6 @@ import filewrite
 import fileread            # 从文件中读取字典
 from normal_node import *  # 导入思远的代码
 
-# 端口列表
-message_port = 12345
-key_port = 12346
-regist_port = 12347
-
 
 class ManagePoint(normal_node):
     def __init__(self):
@@ -81,6 +76,7 @@ class ManagePoint(normal_node):
         if info in List:
             send(ip, msg=b"UserID have been used! Please Change another one")
         else:
+            print("adduesr:", info)
             List.append(info)
             filewrite.write(
                 "Information/Priviate_info/manager_info/userlist.txt", List)
@@ -92,7 +88,9 @@ class ManagePoint(normal_node):
             s = secretkey()                 # 私钥生成函数
             self.__commuinfo["Group"][info] = ip
             self.__userkeys[info] = s
-            send(ip, msg=b"Ask for pubkeyforencrypt")
+            for i in range(4):
+                time.sleep(1)
+                send(ip, msg=b"Ask for pubkeyforencrypt")
             pubkey = self.keyreceive()
             pubkey = rsa.PublicKey.load_pkcs1(pubkey)
             time.sleep(2)
@@ -110,8 +108,10 @@ class ManagePoint(normal_node):
             self.vector = accesscontrol
             self.intz = newZ
             self.infoupdate()
-            self.Grouppublicinfodistribute(
-                str((accesscontrol, self.intz, self.ID)))
+            for i in range(4):
+                time.sleep(1)
+                self.Grouppublicinfodistribute(
+                    str((accesscontrol, self.intz, self.ID)))
 
     def Grouppublicinfodistribute(self, info):
         sender(info)
@@ -192,7 +192,8 @@ def secretkey():
 
 
 T0 = ManagePoint()
-T0.node_registration("192.168.43.98")
+# T0.Monitor()
+T0.node_registration("192.168.43.1")
 T0.infoupdate()
 msg = T0.group_session_key_calculation()
 print("accesscontrol:", T0.vector)
