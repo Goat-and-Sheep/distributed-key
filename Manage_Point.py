@@ -77,7 +77,8 @@ class ManagePoint(normal_node):
             send(ip, msg=b"UserID have been used! Please Change another one")
         else:
             print("adduesr:", info)
-            List.append(info)
+            print("ip:", ip)
+#            List.append(info)
             filewrite.write(
                 "Information/Priviate_info/manager_info/userlist.txt", List)
             tmp = random.randint(1, 100)       # 访问控制多项式更新Z
@@ -93,7 +94,7 @@ class ManagePoint(normal_node):
                 send(ip, msg=b"Ask for pubkeyforencrypt")
             pubkey = self.keyreceive()
             pubkey = rsa.PublicKey.load_pkcs1(pubkey)
-            time.sleep(2)
+            time.sleep(4)
             self.keysend(ip, s, pubkey)  # 将生成的私钥返还给注册者
             H = []
             for s in self.__userkeys.values():
@@ -193,7 +194,7 @@ def secretkey():
 
 T0 = ManagePoint()
 # T0.Monitor()
-T0.node_registration("192.168.43.1")
+T0.node_registration("192.168.32.137")
 T0.infoupdate()
 msg = T0.group_session_key_calculation()
 print("accesscontrol:", T0.vector)
