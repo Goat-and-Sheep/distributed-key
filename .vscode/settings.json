@@ -1,0 +1,30 @@
+{
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.wordWrap": "on",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.suggestSelection": "first",
+    "python.analysis.disabled": [
+        "unresplved-import"
+    ],
+    "python.linting.pylintArgs": [
+        "--errors-only",
+        "--disable=E0401"
+    ],
+    // "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    //"terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    //"terminal.integrated.shell.windows": "D:\\Git\\bin\\bash.exe",
+    "editor.fontSize": 20,
+    //"terminal.explorerKind": "external",
+    //"terminal.integrated.rendererType": "dom",
+    //"terminal.integrated.cursorBlinking": true,
+    //"terminal.integrated.lineHeight": 1.2,
+    //"terminal.integrated.letterSpacing": 0.1,
+    "terminal.integrated.fontSize": 16, //字体大小设置
+    //"terminal.integrated.fontFamily": "Lucida Console", //字体设置
+    //"terminal.integrated.shell.linux": "/bin/zsh",
+    "http.proxySupport": "off",
+    "debug.onTaskErrors": "debugAnyway",
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    "files.defaultLanguage": " ${activeEditorLanguage}",
+}
