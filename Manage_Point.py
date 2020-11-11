@@ -109,6 +109,7 @@ class ManagePoint(normal_node):
             self.vector = accesscontrol
             self.intz = newZ
             self.infoupdate()
+            time.sleep(5)
             self.Grouppublicinfodistribute(
                 str((accesscontrol, self.intz, self.ID)))
             print("register complete!")
@@ -174,6 +175,7 @@ class ManagePoint(normal_node):
         self.vector = accesscontrol
         self.intz = newZ
         self.infoupdate()
+        time.sleep(4)
         self.Grouppublicinfodistribute(
             str((accesscontrol, self.intz)))
 
