@@ -76,9 +76,7 @@ class ManagePoint(normal_node):
         if info in List:
             send(ip, msg=b"UserID have been used! Please Change another one")
         else:
-            print("adduesr:", info)
-            print("ip:", ip)
-#            List.append(info)
+            List.append(info)
             filewrite.write(
                 "Information/Priviate_info/manager_info/userlist.txt", List)
             tmp = random.randint(1, 100)       # 访问控制多项式更新Z
@@ -127,7 +125,9 @@ class ManagePoint(normal_node):
                     print("Out of time")
                     return 0
                 ip = self.__commuinfo["Group"][info[1]]
-                send(ip, msg=b"Ask for pubkeyforverify")
+                for i in range(4):
+                    time.sleep(1)
+                    send(ip, msg=b"Ask for pubkeyforverify")
                 pubkey = self.keyreceive()
                 pubkey = rsa.PublicKey.load_pkcs1(pubkey)
                 if not rsa.verify(info[2][0].encode(
@@ -168,8 +168,10 @@ class ManagePoint(normal_node):
         self.vector = accesscontrol
         self.intz = newZ
         self.infoupdate()
-        self.Grouppublicinfodistribute(
-            str((accesscontrol, self.intz)))
+        for i in range(4):
+            time.sleep(1)
+            self.Grouppublicinfodistribute(
+                str((accesscontrol, self.intz)))
 
 
 def LFSR(m):

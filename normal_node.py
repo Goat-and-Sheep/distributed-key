@@ -159,7 +159,7 @@ class normal_node:
             data = data.decode("utf-8")
             client_addr = client_addr[0]
             if data == "Ask for pubkeyforverify":
-                time.sleep(5)
+                time.sleep(6)
                 send(gc, msg=self.pubkeyforverify.save_pkcs1(),
                      port=key_port)
                 udp_recv.close()
