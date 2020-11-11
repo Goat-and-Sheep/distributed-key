@@ -201,10 +201,10 @@ def secretkey():
 
 
 T0 = ManagePoint()
-T0.Monitor()
+# T0.Monitor()
 # T0.node_registration("192.168.43.80")
-# T0.infoupdate()
-# msg = T0.group_session_key_calculation()
-# print("accesscontrol:", T0.vector)
-# print("intZ:", T0.intz)
-# print("key:", msg)
+T0.infoupdate()
+msg = T0.group_session_key_calculation()
+print("accesscontrol:", T0.vector)
+print("intZ:", T0.intz)
+print("key:", msg)

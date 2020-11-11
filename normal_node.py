@@ -2,6 +2,7 @@ import rsa
 import random
 import hashlib
 import fileread
+import filewrite
 import socket
 import time
 import struct
@@ -100,6 +101,8 @@ class normal_node:
         for i in range(1, len(self.vector)):
             group_session_key += self.vector[-(i+1)]*pow(hash_num, i)
         self.groupkey = group_session_key
+        filewrite.write(
+            "Information\Priviate_info\self_info\group_key.txt", group_session_key)
         return group_session_key
 
     def public_info_receiving(self):
