@@ -105,10 +105,19 @@ class normal_node:
     def public_info_receiving(self):
         # 此处也需要一个控件
         # 更新acp系数向量和随机整数
-        msg = receiver()
-        self.vector = eval(msg)[0]
-        self.intz = eval(msg)[1]
-        self.gc["USER_ID"] = eval(msg)[2]
+        Maxsize = 1024*16
+        udp_recv = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        ip_port = ("", key_port)
+        udp_recv.bind(ip_port)
+        try:
+            msg, client_addr = udp_recv.recvfrom(Maxsize)
+            del client_addr
+            self.vector = eval(msg)[0]
+            self.intz = eval(msg)[1]
+            self.gc["USER_ID"] = eval(msg)[2]
+        except:
+            print("Link lose")
+        udp_recv.close()
         return 0
 
     def node_registration(self, your_gc):
