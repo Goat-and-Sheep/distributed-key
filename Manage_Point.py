@@ -78,7 +78,7 @@ class ManagePoint(normal_node):
         else:
             print("adduesr:", info)
             print("ip:", ip)
-#            List.append(info)
+            List.append(info)
             filewrite.write(
                 "Information/Priviate_info/manager_info/userlist.txt", List)
             tmp = random.randint(1, 100)       # 访问控制多项式更新Z
@@ -111,13 +111,15 @@ class ManagePoint(normal_node):
             self.infoupdate()
             self.Grouppublicinfodistribute(
                 str((accesscontrol, self.intz, self.ID)))
-            print("register complicated!")
+            print("register complete!")
 
     def Grouppublicinfodistribute(self, info):
         userlist = fileread.read(
             "Information/Priviate_info/manager_info/userlist.txt")
         for user in userlist:
-            send(self.__commuinfo["Group"][user], msg=info.encode("utf-8"))
+            for i in range(4):
+                time.sleep(1)
+                send(self.__commuinfo["Group"][user], msg=info.encode("utf-8"))
 
     def deluser(self, info, Type=1):
         '''删除群成员'''

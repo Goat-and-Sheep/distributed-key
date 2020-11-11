@@ -107,7 +107,7 @@ class normal_node:
         # 更新acp系数向量和随机整数
         Maxsize = 1024*16
         udp_recv = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        ip_port = ("", key_port)
+        ip_port = ("", message_port)
         udp_recv.bind(ip_port)
         try:
             msg, client_addr = udp_recv.recvfrom(Maxsize)
