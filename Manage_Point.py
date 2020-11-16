@@ -38,7 +38,7 @@ class ManagePoint(normal_node):
         dic["gc"] = self.gc
         dic["groupkey"] = self.groupkey
         filewrite.write(
-            "Information/Priviate_info/self_info/self_into.txt", dic)
+            "Information/Priviate_info/self_info/self_info.txt", dic)
 
     def Monitor(self):
         # 监控函数

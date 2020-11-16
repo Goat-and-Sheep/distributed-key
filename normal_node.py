@@ -29,7 +29,7 @@ socket.setdefaulttimeout(timeout)
 class normal_node:
     def __init__(self):
         dic = fileread.read(
-            "Information/Priviate_info/self_info/self_into.txt")
+            "Information/Priviate_info/self_info/self_info.txt")
         self.ID = dic["ID"]
         self.pkey = dic["pkey"]
         self.vector = dic["vector"]
