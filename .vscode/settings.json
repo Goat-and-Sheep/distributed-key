@@ -25,6 +25,6 @@
     //"terminal.integrated.shell.linux": "/bin/zsh",
     "http.proxySupport": "off",
     "debug.onTaskErrors": "debugAnyway",
-    "python.dataScience.sendSelectionToInteractiveWindow": true,
     "files.defaultLanguage": " ${activeEditorLanguage}",
+    "jupyter.sendSelectionToInteractiveWindow": true,
 }

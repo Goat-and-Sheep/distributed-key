@@ -18,14 +18,14 @@ class ManagePoint(normal_node):
         dic = fileread.read(
             "Information/Priviate_info/manager_info/manager_info.txt")
         self.__prekey = dic["prekey"]    # 当前层密钥
-        self.__class = dic["class"]          # 当前层与下一层ID
+        self.Class = dic["class"]          # 当前层与下一层ID
         self.__commuinfo = dic["connectinfo"]  # 父节点、管辖的群组、直接连接的下一层节点的通信信息
         self.__userkeys = dic["userkeys"]    # 存储连接的普通节点的私钥信息
 
     def infoupdate(self):
         dic = {}
         dic["prekey"] = self.__prekey
-        dic["class"] = self.__class
+        dic["class"] = self.Class
         dic["connectinfo"] = self.__commuinfo
         dic["userkeys"] = self.__userkeys
         filewrite.write(
@@ -200,11 +200,11 @@ def secretkey():
     return sha2(str(value))
 
 
-T0 = ManagePoint()
-# T0.Monitor()
-# T0.node_registration("192.168.43.80")
-T0.infoupdate()
-msg = T0.group_session_key_calculation()
-print("accesscontrol:", T0.vector)
-print("intZ:", T0.intz)
-print("key:", msg)
+# T0 = ManagePoint()
+# # T0.Monitor()
+# # T0.node_registration("192.168.43.80")
+# T0.infoupdate()
+# msg = T0.group_session_key_calculation()
+# print("accesscontrol:", T0.vector)
+# print("intZ:", T0.intz)
+# print("key:", msg)
