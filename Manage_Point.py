@@ -54,8 +54,10 @@ class ManagePoint(normal_node):
                 try:
                     if eval(data)[0] == "Register":
                         self.adduser(eval(data)[1], client_addr)
+                        return 0
                     elif eval(data)[0] == "Retreat":
                         self.deluser(eval(data), 2)
+                        return 0
                 except:
                     print("Ineffective request")
         except:
@@ -128,7 +130,7 @@ class ManagePoint(normal_node):
             try:
                 clock = int(round(time.time()*1000))
                 clock_check = eval(info[2][0])
-                if clock-clock_check > 1000*60:
+                if clock-clock_check[1] > 1000*60:
                     print("Out of time")
                     return 0
                 ip = self.__commuinfo["Group"][info[1]]
